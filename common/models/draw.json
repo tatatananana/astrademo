@@ -1,0 +1,29 @@
+{
+  "name": "Draw",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "properties": {
+    "created": {
+      "type": "Date",
+      "required": true
+    },
+    "drawTime": {
+      "type": "Number",
+      "default":0
+    },
+    "drawData": {
+      "type": "Object"
+    },
+    "isPrivate": {
+      "type": "Boolean",
+      "default": false
+    },
+    "hashKey": {
+      "type": "String"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": []
+}

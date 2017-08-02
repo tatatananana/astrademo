@@ -3,15 +3,15 @@
 <hr>
 
 <div class="list-group">
-  <a class="list-group-item f20px" ng-repeat="todo in todos" ng-click="edit(todo)">
-    {{todo.content}}&nbsp;{{todo.id}}
+  <a class="list-group-item f20px" ng-repeat="draw in draws" ng-click="edit(draw)">
+    {{draw.id}}
     <i class="glyphicon glyphicon-remove pull-right lh0"
-        ng-click="removeTodo($event,todo)"></i></a>
+        ng-click="remove($event,draw)"></i></a>
 </div>
 
-<h3 ng-if="todos.length==0"><em>no drawings yet..</em></h3>
+<h3 ng-if="draws.length==0"><em>no drawings yet..</em></h3>
 
 <!-- floating action-->
-<button type="button" class="btn btn-primary btn-circle btn-lg btn-float-material" ng-click="addTodo()">
+<button type="button" class="btn btn-primary btn-circle btn-lg btn-float-material" ng-click="add()">
   <i class="glyphicon glyphicon-plus"></i>
 </button>

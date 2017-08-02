@@ -6,28 +6,28 @@ angular
 
     //ctrl init function
     function init() {
-      $scope.todos = [];
-      getTodos();
+      $scope.draws = [];
+      getDrawings();
     }
     init();
 
-    function getTodos() {
+    function getDrawings() {
       DrawingService.get().then(function(results) {
-        $scope.todos = results;
+        $scope.draws = results;
       });
     }
 
     //scope functions
-    $scope.addTodo = function() {
+    $scope.add = function() {
       console.log("add");
       //TODO imliment redirect
     };
 
-    $scope.removeTodo = function($event,item) {
+    $scope.remove = function($event,item) {
       console.log("remove",item.id);
 
       DrawingService.deleteById(item.id).then(function() {
-        getTodos();
+        getDrawings();
       });
 
       $event.stopPropagation();

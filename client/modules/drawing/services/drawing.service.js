@@ -1,14 +1,14 @@
 'use strict';
 angular
   .module('com.module.drawing')
-  .service('DrawingService',function(Todo) {
+  .service('DrawingService',function(Draw) {
 
     function loadall() {
-      return Todo.find().$promise;
+      return Draw.find().$promise;
     }
 
     function deleteById(id) {
-      return Todo.deleteById().$promise;
+      return Draw.deleteById().$promise;
     }
 
     //export
