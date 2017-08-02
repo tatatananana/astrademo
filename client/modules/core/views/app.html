@@ -1,0 +1,17 @@
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Astralink Demo</a>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div ui-view></div>
+  <div class="alert alert-danger" role="alert" ng-repeat="error in errors">
+    Oh snap! <strong>{{error.title}}</strong> {{error.msg}}
+  </div>
+  <div class="alert alert-success" role="alert" ng-repeat="success in successes">
+    <strong>{{success.title}}</strong> {{success.msg}}
+  </div>
+</div>

@@ -4,3 +4,27 @@ body {
 .glyphicon-remove:hover {
   cursor:pointer
 }
+
+.btn-circle {
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  padding: 6px 16px;
+  font-size: 18px;
+  line-height: 1.5;
+  border-radius: 30px;
+}
+
+.btn-float-material {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+}
+
+.f20px {
+  font-size: 20px;
+}
+
+.lh0 {
+  line-height: normal;
+}
