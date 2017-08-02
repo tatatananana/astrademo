@@ -6,7 +6,6 @@ angular
 
     //ctrl init function
     function init() {
-      console.log('ListCtrl init');
       $scope.todos = [];
       getTodos();
     }
