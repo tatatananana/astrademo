@@ -12,5 +12,10 @@ angular
         url: '/list',
         templateUrl: 'modules/drawing/views/list.html',
         controller: 'ListCtrl'
+      })
+      .state('app.drawing.create', {
+        url: '/create',
+        templateUrl: 'modules/drawing/views/create.html',
+        controller: 'CreateCtrl'
       });
   });

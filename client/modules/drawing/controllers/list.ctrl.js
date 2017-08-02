@@ -1,8 +1,7 @@
 'use strict';
 angular
   .module('com.module.drawing')
-  .controller('ListCtrl', function($scope,
-      $state, DrawingService) {
+  .controller('ListCtrl', function($scope, $state, DrawingService) {
 
     //ctrl init function
     function init() {
@@ -19,8 +18,7 @@ angular
 
     //scope functions
     $scope.add = function() {
-      console.log("add");
-      //TODO imliment redirect
+      $state.go('app.drawing.create');
     };
 
     $scope.remove = function($event,item) {
