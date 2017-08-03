@@ -52,7 +52,7 @@
       $scope.save = function () {
         $scope.newData = false;
         $scope.draw.drawData = recordArr;
-        DrawingService.save($scope.draw).then(function() {
+        DrawingService.save($scope.draw).then(function(savedObj) {
           $uibModal.open({
             animation: true,
             backdrop: false,
@@ -60,7 +60,7 @@
             controller: 'SavedModalCtrl',
             resolve: {
               shareLink: function() {
-                var hash = "#!/app/drawing/create/"+'asasasasasa';
+                var hash = "#!/app/drawing/create/"+savedObj.hashKey;
                 return window.location.href.replace(window.location.hash,hash);
               }
             }
