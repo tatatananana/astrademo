@@ -1,8 +1,9 @@
   'use strict';
   angular
     .module('com.module.drawing')
-    .controller('CreateCtrl', function($scope, DrawingService) {
+    .controller('CreateCtrl', function($scope, $uibModal, $stateParams,DrawingService) {
 
+      console.log($stateParams.hash);
 
       this.$onInit = function() {
         //defaults
@@ -42,6 +43,21 @@
         $scope.isPlaying = true;
         clearCanvas();
         recordPlay(0,0);
+      };
+
+      $scope.save = function () {
+        var modalInstance = $uibModal.open({
+          animation: true,
+          backdrop: false,
+          templateUrl: 'modules/drawing/views/saved.modal.html',
+          controller: 'SavedModalCtrl',
+          resolve: {
+            shareLink: function() {
+              var hash = "#!/app/drawing/create/"+'asasasasasa';
+              return window.location.href.replace(window.location.hash,hash);
+            }
+          }
+        });
       };
 
 

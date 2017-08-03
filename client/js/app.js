@@ -6,6 +6,7 @@ angular
     'ui.router',
     'colorpicker.module',
     'rzModule',
+    'ngclipboard',
     'com.module.core',
     'com.module.drawing'
   ]);

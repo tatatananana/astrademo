@@ -1,7 +1,7 @@
 'use strict';
 angular
   .module('com.module.core')
-  .config(function($httpProvider) {
+  .config(function($httpProvider,$urlRouterProvider) {
 
     // Intercept error responses
     $httpProvider.interceptors.push(function ($q, $location, CoreService) {
@@ -16,9 +16,4 @@ angular
         }
       };
     });
-
-  })
-  .run(function($location) {
-    //app default path
-    $location.path('/app/drawing/list');
   });

@@ -17,7 +17,7 @@ angular
 
     //scope functions
     $scope.add = function() {
-      $state.go('app.drawing.create');
+      $state.go('app.drawing.create',{hash:'new'});
     };
 
     $scope.remove = function($event,item) {

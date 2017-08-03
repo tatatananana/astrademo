@@ -21,6 +21,7 @@ server-side.
 - [Angular UI Bootstrap](https://angular-ui.github.io/bootstrap/)
 - [Angular bootstrap colorpicker](https://github.com/buberdds/angular-bootstrap-colorpicker)
 - [AngularJS slider directive](https://github.com/angular-slider/angularjs-slider)
+- [AngularJS clipboard](https://github.com/sachinchoolur/ngclipboard)
 - [Bower](http://bower.io/)
 - [LoopBack](http://loopback.io/)
 - [LoopBack AngularJS SDK](http://loopback.io/doc/en/lb2/AngularJS-JavaScript-SDK.html)

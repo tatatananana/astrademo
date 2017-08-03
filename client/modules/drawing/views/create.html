@@ -29,7 +29,7 @@
         <label class="btn btn-primary" ng-model="draw.isPrivate" uib-btn-radio="false">Public</label>
         <label class="btn btn-primary" ng-model="draw.isPrivate" uib-btn-radio="true">Private</label>
     </div>
-    <button type="button" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Save to server" tooltip>
+    <button type="button" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Save to server" tooltip ng-click="save()">
       <i class="glyphicon glyphicon-floppy-disk"></i>
     </button>
     <button type="button" class="btn btn-success" ng-click="replayDrawing()" ng-disabled="isPlaying" data-toggle="tooltip" data-placement="top" title="Replay drawing" tooltip>

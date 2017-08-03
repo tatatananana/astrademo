@@ -1,7 +1,7 @@
 'use strict';
 angular
   .module('com.module.drawing')
-  .config(function($stateProvider) {
+  .config(function($stateProvider,$urlRouterProvider) {
     $stateProvider
       .state('app.drawing', {
         abstract: true,
@@ -14,8 +14,14 @@ angular
         controller: 'ListCtrl'
       })
       .state('app.drawing.create', {
-        url: '/create',
+        url: '/create/:hash',
         templateUrl: 'modules/drawing/views/create.html',
         controller: 'CreateCtrl'
+      });
+
+      $urlRouterProvider.otherwise(function($injector) {
+          var $state = $injector.get('$state');
+          $state.go('app.drawing.list');
+          console.log("default activeted");
       });
   });
