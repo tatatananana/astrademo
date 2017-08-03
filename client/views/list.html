@@ -1,0 +1,16 @@
+<h1>Drawing list</h1>
+
+<hr>
+
+<div class="list-group">
+  <a class="list-group-item" ng-repeat="todo in todos">{{todo.content}}&nbsp;
+    <i class="glyphicon glyphicon-remove pull-right"
+        ng-click="removeTodo(todo)"></i></a>
+</div>
+
+<h3 ng-if="todos.length==0"><em>no drawings yet..</em></h3>
+
+<!-- floating action-->
+<button type="button" class="btn btn-primary btn-circle btn-lg btn-float-material" ng-click="addTodo()">
+  <i class="glyphicon glyphicon-plus"></i>
+</button>

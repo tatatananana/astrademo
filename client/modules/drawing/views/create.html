@@ -1,0 +1,41 @@
+
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <div class="btn-group btn-group-justified" role="group" aria-label="...">
+      <div class="btn-group" role="group">
+        <label class="btn btn-primary" ng-model="tools.type" uib-btn-radio="'brush'">
+          <i class="glyphicon glyphicon-pencil"></i>
+        </label>
+      </div>
+      <div class="btn-group" role="group">
+        <label class="btn btn-primary" ng-model="tools.type" uib-btn-radio="'erase'">
+          <i class="glyphicon glyphicon-erase"></i>
+        </label>
+      </div>
+      <div class="btn-group" role="group">
+        <button colorpicker="hex" class="btn btn-primary" colorpicker-position="bottom"  ng-model="tools.color" ng-style="{'background-color': tools.color}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+      </div>
+    </div>
+    <div>
+        <rzslider rz-slider-model="tools.width" rz-slider-options="slider.options"></rzslider>
+    </div>
+  </div>
+  <div class="panel-body pnl-draw no_pad">
+    <canvas id="cnvsDraw" class="strech" style="position:relative;"></canvas>
+  </div>
+  <div class="panel-footer">
+    <div class="btn-group">
+        <label class="btn btn-primary" ng-model="draw.isPrivate" uib-btn-radio="false">Public</label>
+        <label class="btn btn-primary" ng-model="draw.isPrivate" uib-btn-radio="true">Private</label>
+    </div>
+    <button type="button" class="btn btn-success" ng-click="save()" ng-disabled="!newData">
+      <i class="glyphicon glyphicon-floppy-disk"></i>
+    </button>
+    <button type="button" class="btn btn-success" ng-click="replayDrawing()" ng-disabled="isPlaying">
+      <i class="glyphicon glyphicon-play-circle"></i>
+    </button>
+  </div>
+</div>
+<small ng-if="draw.created">Ceated: {{draw.created | date:'medium'}},</small>
+<small ng-if="draw.drawTime>0">Draw time: {{draw.drawTime}}s</small>

@@ -1,0 +1,17 @@
+<h1>Drawings list</h1>
+
+<hr>
+
+<div class="list-group">
+  <a class="list-group-item" ng-repeat="draw in draws" ng-click="edit(draw)">
+    <span class="f12px">Created {{draw.created | date:'medium'}}, Draw time: {{draw.drawTime}}s</span>
+    <i class="glyphicon glyphicon-remove pull-right lh0 f20px"
+        ng-click="remove($event,draw)"></i></a>
+</div>
+
+<h3 ng-if="draws.length==0"><em>no drawings yet..</em></h3>
+
+<!-- floating action-->
+<button type="button" class="btn btn-primary btn-circle btn-lg btn-float-material" ng-click="add()">
+  <i class="glyphicon glyphicon-plus"></i>
+</button>
