@@ -8,7 +8,7 @@ angular
     }
 
     function deleteById(id) {
-      return Draw.deleteById().$promise;
+      return Draw.deleteById({id:id}).$promise;
     }
 
     function save(draw) {
