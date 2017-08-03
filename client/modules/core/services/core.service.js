@@ -24,7 +24,7 @@ angular
     function clearAfterTimeout(name,self) {
       $timeout(function (self){
         self[name].shift();
-      }.bind(null,self),3000)
+      }.bind(null,self),5000)
     }
 
   });

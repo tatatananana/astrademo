@@ -29,7 +29,7 @@
         <label class="btn btn-primary" ng-model="draw.isPrivate" uib-btn-radio="false">Public</label>
         <label class="btn btn-primary" ng-model="draw.isPrivate" uib-btn-radio="true">Private</label>
     </div>
-    <button type="button" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Save to server" tooltip ng-click="save()">
+    <button type="button" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Save to server" tooltip ng-click="save()" ng-disabled="!newData">
       <i class="glyphicon glyphicon-floppy-disk"></i>
     </button>
     <button type="button" class="btn btn-success" ng-click="replayDrawing()" ng-disabled="isPlaying" data-toggle="tooltip" data-placement="top" title="Replay drawing" tooltip>
@@ -37,3 +37,5 @@
     </button>
   </div>
 </div>
+<small ng-if="draw.created">Ceated: {{draw.created | date:'medium'}},</small>
+<small ng-if="draw.drawTime>0">Draw time: {{draw.drawTime}}s</small>

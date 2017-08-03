@@ -7,8 +7,12 @@
 
       this.$onInit = function() {
         //defaults
+        $scope.newData = false;
+
+        //TODO load drawing
         $scope.draw = {
-          isPrivate:false
+          isPrivate:false,
+          drawTime:0
         };
 
         $scope.tools = {
@@ -46,18 +50,26 @@
       };
 
       $scope.save = function () {
-        var modalInstance = $uibModal.open({
-          animation: true,
-          backdrop: false,
-          templateUrl: 'modules/drawing/views/saved.modal.html',
-          controller: 'SavedModalCtrl',
-          resolve: {
-            shareLink: function() {
-              var hash = "#!/app/drawing/create/"+'asasasasasa';
-              return window.location.href.replace(window.location.hash,hash);
+        $scope.newData = false;
+        $scope.draw.drawData = recordArr;
+        DrawingService.save($scope.draw).then(function() {
+          $uibModal.open({
+            animation: true,
+            backdrop: false,
+            templateUrl: 'modules/drawing/views/saved.modal.html',
+            controller: 'SavedModalCtrl',
+            resolve: {
+              shareLink: function() {
+                var hash = "#!/app/drawing/create/"+'asasasasasa';
+                return window.location.href.replace(window.location.hash,hash);
+              }
             }
-          }
+          });
+        }).catch(function(err) {
+          $scope.newData = true;
+          console.log(err);
         });
+
       };
 
 
@@ -67,8 +79,11 @@
       var recordArr = [];
 
       function recordStart() {
-        if(!recordStartTS)
+        if(!recordStartTS) {
           recordStartTS = Date.now();
+          $scope.newData = true;
+          $scope.$apply();
+        }
       }
 
       function recordDraw(x,y,size,color) {
@@ -190,6 +205,8 @@
       // Keep track of the mouse button being released
       function sketchpad_mouseUp() {
         mouseDown=0;
+        $scope.draw.drawTime = Math.round(recordArr[recordArr.length-1].ts/1000);
+        $scope.$apply();
       }
 
       // Keep track of the mouse position and draw a dot if mouse button is currently pressed
@@ -259,7 +276,8 @@
         }
       }
 
-      function  deregisterCanvasEvents() {
+      //unregister events registered on page form initCanvas()
+      function deregisterCanvasEvents() {
         if(is_touch_device()) {
           removeEvent(window, 'touchend', sketchpad_mouseUp);
         } else {

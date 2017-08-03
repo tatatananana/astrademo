@@ -11,9 +11,14 @@ angular
       return Draw.deleteById().$promise;
     }
 
+    function save(draw) {
+      return Draw.create(draw).$promise;
+    }
+
     //export
     return {
       get:loadall,
+      save:save,
       deleteById: deleteById
     };
   });
