@@ -3,7 +3,8 @@
     .module('com.module.drawing')
     .controller('CreateCtrl', function($scope, DrawingService) {
 
-      function init() {
+
+      this.$onInit = function() {
         //defaults
         $scope.draw = {
           isPrivate:false
@@ -30,16 +31,14 @@
         $scope.$on('$destroy',function() {
           deregisterCanvasEvents();
         });
-
-      }
-      init();
+      };
 
 
       //scope functions
       $scope.replayDrawing = function() {
         if(recordArr.length==0)
           return;
-          
+
         $scope.isPlaying = true;
         clearCanvas();
         recordPlay(0,0);

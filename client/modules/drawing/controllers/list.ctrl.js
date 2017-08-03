@@ -4,11 +4,10 @@ angular
   .controller('ListCtrl', function($scope, $state, DrawingService) {
 
     //ctrl init function
-    function init() {
+    this.$onInit = function() {
       $scope.draws = [];
       getDrawings();
-    }
-    init();
+    };
 
     function getDrawings() {
       DrawingService.get().then(function(results) {
