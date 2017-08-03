@@ -25,6 +25,10 @@ body {
   font-size: 20px;
 }
 
+.f12px {
+  font-size: 12px;
+}
+
 .lh0 {
   line-height: normal;
 }
@@ -43,5 +47,5 @@ body {
 }
 
 .modal-dialog {
-  margin-top:33vh; 
+  margin-top:33vh;
 }

@@ -3,9 +3,9 @@
 <hr>
 
 <div class="list-group">
-  <a class="list-group-item f20px" ng-repeat="draw in draws" ng-click="edit(draw)">
-    {{draw.id}}
-    <i class="glyphicon glyphicon-remove pull-right lh0"
+  <a class="list-group-item" ng-repeat="draw in draws" ng-click="edit(draw)">
+    <span class="f12px">Created {{draw.created | date:'medium'}}, Draw time: {{draw.drawTime}}s</span>
+    <i class="glyphicon glyphicon-remove pull-right lh0 f20px"
         ng-click="remove($event,draw)"></i></a>
 </div>
 

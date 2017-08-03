@@ -204,9 +204,11 @@
 
       // Keep track of the mouse button being released
       function sketchpad_mouseUp() {
+        if(mouseDown==1) {
+          $scope.draw.drawTime = Math.round(recordArr[recordArr.length-1].ts/1000);
+          $scope.$apply();
+        }
         mouseDown=0;
-        $scope.draw.drawTime = Math.round(recordArr[recordArr.length-1].ts/1000);
-        $scope.$apply();
       }
 
       // Keep track of the mouse position and draw a dot if mouse button is currently pressed

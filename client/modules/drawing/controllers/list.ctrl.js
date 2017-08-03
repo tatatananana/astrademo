@@ -31,7 +31,7 @@ angular
     };
 
     $scope.edit = function(item) {
-      console.log("edit",item);
+      $state.go('app.drawing.create',{hash:item.hashKey});
     };
 
   });
