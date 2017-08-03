@@ -1,11 +1,12 @@
   'use strict';
   angular
     .module('com.module.drawing')
-    .controller('CreateCtrl', function($scope, $uibModal, $stateParams,DrawingService) {
+    .controller('CreateCtrl', function($scope, $state,$uibModal, $stateParams,DrawingService,CoreService) {
 
-      console.log($stateParams.hash);
+      console.log();
 
       this.$onInit = function() {
+
         //defaults
         $scope.newData = false;
 
@@ -32,11 +33,38 @@
         };
 
         initCanvas();
+        if($stateParams.hash!='new'){
+          loadDrawing($stateParams.hash);
+        }
 
         $scope.$on('$destroy',function() {
           deregisterCanvasEvents();
         });
       };
+
+      function loadDrawing(hash) {
+        DrawingService.load($stateParams.hash).then(function(loadedObj) {
+          if(loadedObj.length==1) {
+            $scope.draw.isPrivate = loadedObj[0].isPrivate;
+            $scope.draw.drawTime = loadedObj[0].drawTime;
+            $scope.draw.created = loadedObj[0].created;
+            recordArr=loadedObj[0].drawData;
+            reDraw();
+
+            //set recordStartTS in order to continue the drawing;
+            recordStartTS = Date.now()-$scope.draw.drawTime*1000;
+            $scope.newData = true;
+
+          } else {
+            //no object found
+            CoreService.toastError('Not found','The drawing you were looking for dose not exsits');
+            $state.go('app.drawing.list');
+          }
+        }).catch(function(err) {
+          console.log(err);
+          $state.go('app.drawing.list');
+        });
+      }
 
 
       //scope functions
@@ -51,6 +79,7 @@
 
       $scope.save = function () {
         $scope.newData = false;
+        $scope.draw.drawTime = Math.round(recordArr[recordArr.length-1].ts/1000);
         $scope.draw.drawData = recordArr;
         DrawingService.save($scope.draw).then(function(savedObj) {
           $uibModal.open({

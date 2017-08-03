@@ -20,7 +20,6 @@ module.exports = function(Draw) {
   Draw.observe('before save', function (ctx, next) {
     if(ctx.isNewInstance) {
       ctx.instance.created = new Date();
-      ctx.instance.drawTime = ctx.instance.drawData[ctx.instance.drawData.length-1].ts;
 
       generateHash(function (err,guid) {
         if(err)

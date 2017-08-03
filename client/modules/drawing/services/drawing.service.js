@@ -7,6 +7,15 @@ angular
       return Draw.find().$promise;
     }
 
+    function load(hash) {
+      return Draw.find({ filter: {
+                                where: {
+                                  hashKey: hash
+                                }
+                              }
+                            }).$promise;
+    }
+
     function deleteById(id) {
       return Draw.deleteById({id:id}).$promise;
     }
@@ -19,6 +28,7 @@ angular
     return {
       get:loadall,
       save:save,
-      deleteById: deleteById
+      deleteById: deleteById,
+      load:load
     };
   });
